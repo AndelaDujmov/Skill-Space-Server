@@ -14,7 +14,7 @@ class Course
     #[ORM\Column(type: "string", length: 36, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
-    private ?Uuid $id = null;
+    private ?string $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;

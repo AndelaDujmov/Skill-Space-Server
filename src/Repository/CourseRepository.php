@@ -64,6 +64,10 @@ class CourseRepository extends ServiceEntityRepository
         return $repository->find($id);
     }
 
+    public function fetchCourseBy(string $code = null, string $name = null){
+
+    }
+
     public function updateCourse(Uuid $id, Course $updatedCourse): void
     {
         $repository = $this->getRepository();
