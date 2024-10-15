@@ -30,6 +30,7 @@ class CourseService {
         $course = new Course();
 
         $course->setName($object->getName());
+        $course->setCode($object->getCode());
         $course->setTotalPoints($object->getTotalPoints());
         $course->setLecturesPoints($object->getLecturesPoints());
 
@@ -47,6 +48,7 @@ class CourseService {
         $course = $this->fetchById($id);
 
         $course->setName($object->getName() ?? $course->getName());
+        $course->setCode($object->getCode() ?? $course->getCode());
         $course->setTotalPoints($object->getTotalPoints() ?? $course->getTotalPoints());
         $course->setLecturesPoints($object->getLecturesPoints() ?? $course->getLecturesPoints());
 
@@ -58,7 +60,8 @@ class CourseService {
         $this->courseRepository->deleteCourse(Uuid::fromString($id));
     }
 
-    private function deserialise(string $data): Course {
+    private function deserialise(string $data): Course 
+    {
         return $this->serializer->deserialize($data, Course::class, 'json');
     }
 

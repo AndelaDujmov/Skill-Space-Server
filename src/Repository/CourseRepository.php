@@ -64,15 +64,32 @@ class CourseRepository extends ServiceEntityRepository
         return $repository->find($id);
     }
 
-    public function fetchCourseBy(string $code = null, string $name = null){
+    public function fetchCourseBy(string $code = null, string $name = null): ?Course
+    {
+        $qb = $this->createQueryBuilder('c');
+        
+        if ($code != null)
+        {
+            $qb->andWhere('c.code=:code')
+               ->setParameter('code', $code);
+        }
 
+        if ($name != null)
+        {
+            $qb->andWhere('c.name=:name')
+               ->setParameter('name', $name);
+        }
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 
     public function updateCourse(Uuid $id, Course $updatedCourse): void
     {
         $repository = $this->getRepository();
         $course = $repository->find($id);
+
         $course->setName($updatedCourse->getName() ?? $course->getName());
+        $course->setCode($updatedCourse->getCode() ?? $course->getCode());
         $course->setTotalPoints($updatedCourse->getTotalPoints() ?? $course->getTotalPoints());
         $course->setLecturesPoints($updatedCourse->getLecturesPoints() ?? $course->getLecturesPoints());
 

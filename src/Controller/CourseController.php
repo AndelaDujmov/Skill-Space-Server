@@ -51,6 +51,12 @@ class CourseController extends AbstractController
         ]);
     }
 
+    #[Route('/courses/about', name: 'app_courses_about', methods: ['POST', 'GET'])]
+    public function filterCourses(Request $request): JsonResponse
+    {
+      $
+    }
+
     #[Route('/courses/edit/{id}', name: 'app_courses_edit', methods: ['PUT'])]
     public function editCourse(string $id, Request $request): JsonResponse
     {

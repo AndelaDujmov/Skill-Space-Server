@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <h1 align="center">Welcome to Skill Space Server 👋</h1>
 <p>
 </p>
@@ -20,14 +19,8 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
 
 ## ERA schema
+![ER Dijagram](model/SkillSpace.drawio.png)
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
-=======
-# Skill-Space-Server
-Web application API for learning that contains various courses made with LAMP stack.
->>>>>>> b4363ba4edcb7361e67e8895b42a6fb8d516cb16

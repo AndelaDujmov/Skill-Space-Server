@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\CourseRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 use Symfony\Bridge\Doctrine\Types\UuidType;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: CourseRepository::class)]
+#[UniqueConstraint(fields: ['code'])]
 class Course
 {
     #[ORM\Id]
@@ -18,6 +21,9 @@ class Course
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    #[ORM\Column(length: 10)]
+    private ?string $code = null;
 
     #[ORM\Column]
     private ?int $totalPoints = null;
@@ -38,6 +44,19 @@ class Course
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCode() : ?string
+    {
+
+        return $this->code;
+    }
+
+    public function setCode(string $code): static 
+    {
+        $this->code = $code;
 
         return $this;
     }
